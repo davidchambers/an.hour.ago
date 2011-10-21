@@ -1,4 +1,4 @@
-if (typeof require != null) {
+if (typeof require != "undefined") {
   var NaturalDate = require("./an.hour.ago").NaturalDate
 }
 
