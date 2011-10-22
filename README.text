@@ -56,14 +56,41 @@ method:
     
     11..hours.and(36..minutes).and(9..seconds).ago
 
-That about covers it.
+*Can you help me with date comparison? To determine whether an event occurred
+**more** than a week ago I have to ask whether its numeric representation is
+**less** than that of "a week ago". It makes my head hurt.*
+
+Perhaps you find this more natural?
+
+    event_occurred.more_than(a.week).ago
+
+A practical example:
+
+    var user_registered = db.get(id).registration_date
+    
+    if (user_registered.less_than(15..minutes).ago) $("#tips").show()
+
+`before`/`after` can follow `less_than`/`more_than`:
+
+    if (costume_returned.more_than(2..days).after(halloween)) apply_late_fee()
+
+There's also an `either_side_of` method which does what it says on the tin:
+
+    var unfortunate = birthday.less_than(3..days).either_side_of(christmas)
+
+That just about covers it.
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ### One last thing...
 
-To be clear, an.hour.ago fiddles with `Number.prototype`. Specifically, it
-adds the following properties:
+To be clear, an.hour.ago fiddles with `Date.prototype` and `Number.prototype`.
+Two properties are added to `Date.prototype`:
+
+  + `less_than`
+  + `more_than`
+
+The following properties are added to `Number.prototype`:
 
   + `day`
   + `days`

@@ -1,35 +1,90 @@
 (function() {
-  var NaturalDate, days, def, get, hours, minutes, ms, numberProto, one, seconds, two, unit, units;
+  var $DC, $ND, DateComparator, NaturalDate, days, def, getter, hours, minutes, ms, now, numberProto, one, seconds, two, unit, units;
   var __hasProp = Object.prototype.hasOwnProperty;
+  def = function(object, name, get) {
+    return Object.defineProperty(object, name, {
+      get: get
+    });
+  };
+  now = Date.now || function() {
+    return (new Date).getTime();
+  };
   NaturalDate = (function() {
     function NaturalDate(value) {
       this.value = value;
     }
     return NaturalDate;
   })();
-  NaturalDate.prototype.and = function(naturalDate) {
+  $ND = NaturalDate.prototype;
+  $ND.and = function(naturalDate) {
     return new NaturalDate(this.value + naturalDate.valueOf());
   };
-  NaturalDate.prototype.before = function(date) {
+  $ND.before = function(date) {
     return new Date(date.valueOf() - this.value);
   };
-  NaturalDate.prototype.from = NaturalDate.prototype.after = function(date) {
+  $ND.from = $ND.after = function(date) {
     return new Date(date.valueOf() + this.value);
   };
-  NaturalDate.prototype.valueOf = function() {
+  $ND.valueOf = function() {
     return this.value;
   };
-  def = function(name, get) {
-    return Object.defineProperty(NaturalDate.prototype, name, {
-      get: get
-    });
+  def($ND, 'ago', function() {
+    return new Date(now() - this.value);
+  });
+  def($ND, 'from_now', function() {
+    return new Date(now() + this.value);
+  });
+  DateComparator = (function() {
+    function DateComparator(operator, self, offset) {
+      this.operator = operator;
+      this.self = self;
+      this.offset = offset;
+    }
+    return DateComparator;
+  })();
+  $DC = DateComparator.prototype;
+  $DC.before = function(date) {
+    var other;
+    other = date.valueOf() - this.offset;
+    switch (this.operator) {
+      case '<':
+        return this.self > other;
+      case '>':
+        return this.self < other;
+    }
   };
-  def('ago', function() {
-    return new Date((new Date).getTime() - this.value);
+  $DC.from = $DC.after = function(date) {
+    var other;
+    other = date.valueOf() + this.offset;
+    switch (this.operator) {
+      case '<':
+        return this.self < other;
+      case '>':
+        return this.self > other;
+    }
+  };
+  $DC.either_side_of = function(date) {
+    var other;
+    other = date.valueOf();
+    switch (this.operator) {
+      case '<':
+        return this.before(date) && this.after(date);
+      case '>':
+        return this.before(date) || this.after(date);
+    }
+  };
+  def($DC, 'ago', function() {
+    return this.before(now());
   });
-  def('from_now', function() {
-    return new Date((new Date).getTime() + this.value);
+  def($DC, 'from_now', function() {
+    return this.from(now());
   });
+  Date.prototype.less_than = function(offset) {
+    return new DateComparator('<', this.valueOf(), offset);
+  };
+  Date.prototype.more_than = function(offset) {
+    return new DateComparator('>', this.valueOf(), offset);
+  };
   numberProto = Number.prototype;
   units = {
     millisecond: 1,
@@ -42,17 +97,13 @@
   for (unit in units) {
     if (!__hasProp.call(units, unit)) continue;
     ms = units[unit];
-    get = (function(ms) {
+    getter = (function(ms) {
       return function() {
         return new NaturalDate(this * ms);
       };
     })(ms);
-    Object.defineProperty(numberProto, unit, {
-      get: get
-    });
-    Object.defineProperty(numberProto, unit + 's', {
-      get: get
-    });
+    def(numberProto, unit, getter);
+    def(numberProto, unit + 's', getter);
   }
   one = 1;
   two = 2;
