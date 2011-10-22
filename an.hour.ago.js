@@ -1,8 +1,14 @@
 (function() {
-  var $DC, $ND, DateComparator, NaturalDate, days, def, getter, hours, minutes, ms, now, numberProto, one, seconds, two, unit, units;
+  var $DC, $ND, DateComparator, NaturalDate, days, def, defineProperty, getter, hours, minutes, ms, now, numberProto, one, seconds, two, unit, units;
   var __hasProp = Object.prototype.hasOwnProperty;
+  defineProperty = Object.defineProperty;
+  if (defineProperty == null) {
+    defineProperty = function(object, name, descriptor) {
+      return object.__defineGetter__(name, descriptor.get);
+    };
+  }
   def = function(object, name, get) {
-    return Object.defineProperty(object, name, {
+    return defineProperty(object, name, {
       get: get
     });
   };

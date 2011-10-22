@@ -1,8 +1,13 @@
 # Helpers
 # -------
 
+{defineProperty} = Object
+unless defineProperty?
+  defineProperty = (object, name, descriptor) ->
+    object.__defineGetter__ name, descriptor.get
+
 def = (object, name, get) ->
-  Object.defineProperty object, name, {get}
+  defineProperty object, name, {get}
 
 now = Date.now or -> (new Date).getTime()
 
