@@ -26,8 +26,7 @@ $ND.and = (naturalDate) ->
 $ND.before = (date) ->
   new Date date.valueOf() - @value
 
-$ND.from =
-$ND.after = (date) ->
+$ND.from = $ND.after = (date) ->
   new Date date.valueOf() + @value
 
 $ND.valueOf = ->
@@ -51,8 +50,7 @@ $DC.before = (date) ->
     when '<' then @self > other
     when '>' then @self < other
 
-$DC.from =
-$DC.after = (date) ->
+$DC.from = $DC.after = (date) ->
   other = date.valueOf() + @offset
   switch @operator
     when '<' then @self < other
