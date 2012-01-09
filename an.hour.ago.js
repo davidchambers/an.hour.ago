@@ -1,6 +1,6 @@
 (function() {
-  var $DC, $ND, DateComparator, NaturalDate, days, def, defineProperty, getter, hours, minutes, ms, now, numberProto, one, seconds, two, unit, units;
-  var __hasProp = Object.prototype.hasOwnProperty;
+  var $DC, $ND, DateComparator, NaturalDate, days, def, defineProperty, getter, hours, minutes, ms, now, numberProto, one, seconds, two, unit, units,
+    __hasProp = Object.prototype.hasOwnProperty;
 
   defineProperty = Object.defineProperty;
 
