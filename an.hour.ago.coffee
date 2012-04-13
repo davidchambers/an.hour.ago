@@ -57,7 +57,6 @@ $DC.from = $DC.after = (date) ->
     when '>' then @self > other
 
 $DC.either_side_of = (date) ->
-  other = date.valueOf()
   switch @operator
     when '<' then @before(date) and @after(date)
     when '>' then @before(date) or @after(date)

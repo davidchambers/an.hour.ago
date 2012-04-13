@@ -93,8 +93,6 @@
   };
 
   $DC.either_side_of = function(date) {
-    var other;
-    other = date.valueOf();
     switch (this.operator) {
       case '<':
         return this.before(date) && this.after(date);
