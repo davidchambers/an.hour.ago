@@ -90,6 +90,12 @@ There's also an `either_side_of` method which does what it says on the tin:
 
 That just about covers it.
 
+### Running the test suite
+
+    :::text
+    npm install
+    npm test
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ### One last thing...

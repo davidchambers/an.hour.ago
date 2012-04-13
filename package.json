@@ -1,0 +1,21 @@
+{
+  "name": "an.hour.ago",
+  "version": "0.1.0",
+  "description": "DSL for expressing and comparing dates and times",
+  "author": "David Chambers <dc@hashify.me>",
+  "repository": {
+    "type": "hg",
+    "url": "https://bitbucket.org/davidchambers/an.hour.ago"
+  },
+  "bugs": "https://bitbucket.org/davidchambers/an.hour.ago/issues",
+  "devDependencies": {
+    "coffee-script": "1.2.x",
+    "jessie": "0.4.x",
+    "uglify-js": "1.2.x"
+  },
+  "scripts": {
+    "bytes": "node_modules/uglify-js/bin/uglifyjs an.hour.ago.js | gzip -9f | wc -c",
+    "test": "node_modules/jessie/bin/jessie spec",
+    "uglify": "node_modules/uglify-js/bin/uglifyjs -o an.hour.ago.min.js an.hour.ago.js"
+  }
+}
