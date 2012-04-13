@@ -1,5 +1,5 @@
 (function() {
-  var $DC, $ND, DateComparator, NaturalDate, days, def, defineProperty, getter, hours, minutes, ms, now, numberProto, one, seconds, two, unit, units,
+  var $DC, $ND, DateComparator, NaturalDate, days, def, defineProperty, getter, hours, minutes, ms, now, numberProto, seconds, unit, units,
     __hasProp = Object.prototype.hasOwnProperty;
 
   defineProperty = Object.defineProperty;
@@ -140,21 +140,17 @@
     def(numberProto, unit + 's', getter);
   }
 
-  one = 1;
-
-  two = 2;
-
   NaturalDate.a = {
-    millisecond: one.millisecond,
-    second: one.second,
-    minute: one.minute,
-    day: one.day,
-    week: one.week,
-    fortnight: two.weeks
+    millisecond: 1..millisecond,
+    second: 1..second,
+    minute: 1..minute,
+    day: 1..day,
+    week: 1..week,
+    fortnight: 2..weeks
   };
 
   NaturalDate.an = {
-    hour: one.hour
+    hour: 1..hour
   };
 
   this.NaturalDate = NaturalDate;
