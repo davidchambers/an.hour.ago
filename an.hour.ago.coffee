@@ -89,7 +89,7 @@ units =
   week:              7 * days
 
 for own unit, ms of units
-  getter = ((ms) -> -> new NaturalDate this * ms) ms
+  getter = do (ms = ms) -> -> new NaturalDate this * ms
   def numberProto, unit, getter
   def numberProto, unit + 's', getter
 
