@@ -3,6 +3,11 @@
 an.hour.ago is a small utility which enables wonderfully expressive date and
 time manipulation in JavaScript.
 
+Before we proceed, let me be clear that if supporting Internet Explorer is a
+requirement, you'd best turn back now. If, on the other hand, you're writing
+server-side JavaScript (or CoffeeScript) and desire an elegant means of
+expressing relative dates and times, read on!
+
 Let's start with a simple example...
 
     :::javascript
