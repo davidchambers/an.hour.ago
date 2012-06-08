@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "DSL for expressing and comparing dates and times",
   "author": "David Chambers <dc@hashify.me>",
+  "licenses": [{
+    "type": "WTFPL",
+    "url": "https://bitbucket.org/davidchambers/an.hour.ago/raw/default/LICENSE"
+  }],
   "repository": {
     "type": "hg",
     "url": "https://bitbucket.org/davidchambers/an.hour.ago"
