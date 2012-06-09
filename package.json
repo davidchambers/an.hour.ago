@@ -5,15 +5,15 @@
   "author": "David Chambers <dc@hashify.me>",
   "licenses": [{
     "type": "WTFPL",
-    "url": "https://bitbucket.org/davidchambers/an.hour.ago/raw/default/LICENSE"
+    "url": "https://raw.github.com/davidchambers/an.hour.ago/master/LICENSE"
   }],
   "repository": {
-    "type": "hg",
-    "url": "https://bitbucket.org/davidchambers/an.hour.ago"
+    "type": "git",
+    "url": "https://github.com/davidchambers/an.hour.ago"
   },
-  "bugs": "https://bitbucket.org/davidchambers/an.hour.ago/issues",
+  "bugs": "https://github.com/davidchambers/an.hour.ago/issues",
   "devDependencies": {
-    "coffee-script": "1.2.x",
+    "coffee-script": "1.3.x",
     "jessie": "0.4.x",
     "uglify-js": "1.2.x"
   },
