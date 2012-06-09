@@ -10,37 +10,41 @@ expressing relative dates and times, read on!
 
 Let's start with a simple example...
 
-    :::javascript
-    3..days.ago
+```javascript
+3..days.ago
+```
 
 This produces a [`Date`][1] instance representing 72 hours before the present.
 Neat. What about the future?
 
-    :::javascript
-    1..minute.from_now
+```javascript
+1..minute.from_now
+```
 
 Easy! Note the use of `minute` rather than `minutes`. The two are synonymous;
 singular and plural properties exist for each of the supported units.
 
 Decimals? You betcha:
 
-    :::javascript
-    1.5.hours.ago
+```javascript
+1.5.hours.ago
+```
 
 In fact, they read very nicely since they don't require an awkward double dot.
 
 What about dates relative to other points in time?
 
-    :::javascript
-    var tomorrow  = 1..day.from_now
-    var halloween = new Date("31 October 2011")
-    var christmas = new Date("25 December 2011")
-    
-    1..week.from(tomorrow)
-    
-    2..days.after(halloween)
-    
-    1..week.before(christmas)
+```javascript
+var tomorrow  = 1..day.from_now
+var halloween = new Date("31 October 2011")
+var christmas = new Date("25 December 2011")
+
+1..week.from(tomorrow)
+
+2..days.after(halloween)
+
+1..week.before(christmas)
+```
 
 `from` and `after` are synonymous; use whichever reads better.
 
@@ -49,23 +53,25 @@ tomorrow” – it sounds a bit stiff.*
 
 Well, if you must...
 
-    :::javascript
-    var a  = NaturalDate.a
-    var an = NaturalDate.an
-    
-    a.week.from(tomorrow)
-    
-    a.fortnight.from_now
-    
-    an.hour.ago
+```javascript
+var a  = NaturalDate.a
+var an = NaturalDate.an
+
+a.week.from(tomorrow)
+
+a.fortnight.from_now
+
+an.hour.ago
+```
 
 Oh, and I should mention, you can add `NaturalDate` instances using the `and`
 method:
 
-    :::javascript
-    an.hour.and(58..minutes).from_now
-    
-    11..hours.and(36..minutes).and(9..seconds).ago
+```javascript
+an.hour.and(58..minutes).from_now
+
+11..hours.and(36..minutes).and(9..seconds).ago
+```
 
 *Can you help me with date comparison? To determine whether an event occurred
 **more** than a week ago I have to ask whether its numeric representation is
@@ -73,31 +79,34 @@ method:
 
 Perhaps you find this more natural?
 
-    :::javascript
-    event_occurred.more_than(a.week).ago
+```javascript
+event_occurred.more_than(a.week).ago
+```
 
 A practical example:
 
-    :::javascript
-    var user_registered = db.get(id).registration_date
-    
-    if (user_registered.less_than(15..minutes).ago) $("#tips").show()
+```javascript
+var user_registered = db.get(id).registration_date
+
+if (user_registered.less_than(15..minutes).ago) $("#tips").show()
+```
 
 `before`/`after` can follow `less_than`/`more_than`:
 
-    :::javascript
-    if (costume_returned.more_than(2..days).after(halloween)) apply_late_fee()
+```javascript
+if (costume_returned.more_than(2..days).after(halloween)) apply_late_fee()
+```
 
 There's also an `either_side_of` method which does what it says on the tin:
 
-    :::javascript
-    var unfortunate = birthday.less_than(3..days).either_side_of(christmas)
+```javascript
+var unfortunate = birthday.less_than(3..days).either_side_of(christmas)
+```
 
 That just about covers it.
 
 ### Running the test suite
 
-    :::text
     npm install
     npm test
 
