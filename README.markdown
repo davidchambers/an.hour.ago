@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/davidchambers/an.hour.ago.png)](http://travis-ci.org/davidchambers/an.hour.ago)
 # an.hour.ago
 
 an.hour.ago is a small utility which enables wonderfully expressive date and
