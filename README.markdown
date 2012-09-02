@@ -10,15 +10,16 @@ expressing relative dates and times, read on!
 
 Let's start with a simple example...
 
-```javascript
-3..days.ago
+```coffeescript
+# CoffeeScript                                  # JavaScript
+3.days.ago                                      # 3..days.ago
 ```
 
 This produces a [`Date`][1] instance representing 72 hours before the present.
 Neat. What about the future?
 
-```javascript
-1..minute.from_now
+```coffeescript
+1.minute.from_now                               # 1..minute.from_now
 ```
 
 Easy! Note the use of `minute` rather than `minutes`. The two are synonymous;
@@ -26,24 +27,25 @@ singular and plural properties exist for each of the supported units.
 
 Decimals? You betcha:
 
-```javascript
-1.5.hours.ago
+```coffeescript
+1.5.hours.ago                                   # 1.5.hours.ago
 ```
 
-In fact, they read very nicely since they don't require an awkward double dot.
+In fact, the JavaScript is identical to the CoffeeScript in this case as the
+awkward double dot is not required.
 
 What about dates relative to other points in time?
 
-```javascript
-var tomorrow  = 1..day.from_now
-var halloween = new Date("31 October 2011")
-var christmas = new Date("25 December 2011")
-
-1..week.from(tomorrow)
-
-2..days.after(halloween)
-
-1..week.before(christmas)
+```coffeescript
+tomorrow  = 1.day.from_now                      # var tomorrow  = 1..day.from_now
+halloween = new Date '31 October 2011'          # var halloween = new Date('31 October 2011')
+christmas = new Date '25 December 2011'         # var christmas = new Date('25 December 2011')
+                                                #
+1.week.from tomorrow                            # 1..week.from(tomorrow)
+                                                #
+2.days.after halloween                          # 2..days.after(halloween)
+                                                #
+1.week.before christmas                         # 1..week.before(christmas)
 ```
 
 `from` and `after` are synonymous; use whichever reads better.
@@ -53,23 +55,23 @@ tomorrow” – it sounds a bit stiff.*
 
 Well, if you must...
 
-```javascript
-var a = 1, an = 1
-
-a.week.from(tomorrow)
-
-a.fortnight.from_now
-
-an.hour.ago
+```coffeescript
+a = an = 1                                      # var a = 1, an = 1
+                                                #
+a.week.from tomorrow                            # a.week.from(tomorrow)
+                                                #
+a.fortnight.from_now                            # a.fortnight.from_now
+                                                #
+an.hour.ago                                     # an.hour.ago
 ```
 
 Oh, and I should mention, you can add `NaturalDate` instances using the `and`
 method:
 
-```javascript
-an.hour.and(58..minutes).from_now
-
-11..hours.and(36..minutes).and(9..seconds).ago
+```coffeescript
+an.hour.and(58.minutes).from_now                # an.hour.and(58..minutes).from_now
+                                                #
+11.hours.and(36.minutes).and(9.seconds).ago     # 11..hours.and(36..minutes).and(9..seconds).ago
 ```
 
 *Can you help me with date comparison? To determine whether an event occurred
@@ -78,28 +80,28 @@ an.hour.and(58..minutes).from_now
 
 Perhaps you find this more natural?
 
-```javascript
+```coffeescript
 event_occurred.more_than(a.week).ago
 ```
 
 A practical example:
 
-```javascript
-var user_registered = db.get(id).registration_date
+```coffeescript
+user_registered = db.get(id).registration_date
 
-if (user_registered.less_than(15..minutes).ago) $("#tips").show()
+$('#tips').show() if user_registered.less_than(15.minutes).ago
 ```
 
 `before`/`after` can follow `less_than`/`more_than`:
 
-```javascript
-if (costume_returned.more_than(2..days).after(halloween)) apply_late_fee()
+```coffeescript
+apply_late_fee() if costume_returned.more_than(2.days).after halloween
 ```
 
 There's also an `either_side_of` method which does what it says on the tin:
 
-```javascript
-var unfortunate = birthday.less_than(3..days).either_side_of(christmas)
+```coffeescript
+unfortunate = birthday.less_than(3.days).either_side_of christmas
 ```
 
 That just about covers it.
