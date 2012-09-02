@@ -86,26 +86,10 @@ units =
   minute: minutes = 60 * seconds
   hour:   hours   = 60 * minutes
   day:    days    = 24 * hours
-  week:              7 * days
+  week:   weeks   =  7 * days
+  fortnight:         2 * weeks
 
 for own unit, ms of units
   getter = do (ms = ms) -> -> new NaturalDate this * ms
   def numberProto, unit, getter
   def numberProto, unit + 's', getter
-
-
-# Add `a` and `an` to `NaturalDate`
-# ---------------------------------
-
-NaturalDate.a =
-  millisecond:  1.millisecond
-  second:       1.second
-  minute:       1.minute
-  day:          1.day
-  week:         1.week
-  fortnight:    2.weeks
-NaturalDate.an =
-  hour:         1.hour
-
-# "Export" `NaturalDate`.
-@NaturalDate = NaturalDate

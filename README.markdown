@@ -54,8 +54,7 @@ tomorrow” – it sounds a bit stiff.*
 Well, if you must...
 
 ```javascript
-var a  = NaturalDate.a
-var an = NaturalDate.an
+var a = 1, an = 1
 
 a.week.from(tomorrow)
 
@@ -136,10 +135,8 @@ The following properties are added to `Number.prototype`:
   + `weeks`
 
 Each of these properties has a "getter" which returns a `NaturalDate` object.
-The rest of the methods (`before`, `after`/`from`, and `and`) are to be found
-on `NaturalDate.prototype`.
-
-`NaturalDate` is the only property added to the global object.
+The rest of the methods (`before`, `after`/`from`, and `and`) are attached to
+`NaturalDate.prototype` (which is not exposed).
 
 
 [1]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date

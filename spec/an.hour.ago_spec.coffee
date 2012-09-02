@@ -1,9 +1,10 @@
-{a, an} = require('../an.hour.ago').NaturalDate
+require '../an.hour.ago'
 
 Boolean::should_be = (compare) -> expect(@valueOf()).toEqual compare.valueOf()
 Date::should_be    = (compare) -> expect(this).toEqual compare
 
-tomorrow  = 1.day.from_now
+a = an = 1
+tomorrow  = a.day.from_now
 halloween = new Date '31 October 2011'
 christmas = new Date '25 December 2011'
 
