@@ -75,8 +75,8 @@ an.hour.and(58.minutes).from_now                # an.hour.and(58..minutes).from_
 ```
 
 *Can you help me with date comparison? To determine whether an event occurred
-**more** than a week ago I have to ask whether its numeric representation is
-**less** than that of "a week ago". It makes my head hurt.*
+__more__ than a week ago I have to ask whether its numeric representation is
+__less__ than that of "a week ago". It makes my head hurt.*
 
 Perhaps you find this more natural?
 
