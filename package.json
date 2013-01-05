@@ -9,7 +9,7 @@
   }],
   "repository": {
     "type": "git",
-    "url": "https://github.com/davidchambers/an.hour.ago"
+    "url": "git://github.com/davidchambers/an.hour.ago.git"
   },
   "bugs": "https://github.com/davidchambers/an.hour.ago/issues",
   "devDependencies": {
