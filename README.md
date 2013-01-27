@@ -108,8 +108,8 @@ That just about covers it.
 
 ### Running the test suite
 
-    npm install
-    npm test
+    make setup
+    make test
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
