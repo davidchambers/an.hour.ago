@@ -1,8 +1,14 @@
-bin = node_modules/.bin
+COFFEE = node_modules/.bin/coffee
+MOCHA = node_modules/.bin/mocha --compilers coffee:coffee-script
+
+JS_FILES = $(patsubst src/%.coffee,lib/%.js,$(shell find src -type f))
 
 
-lib/an.hour.ago.js: src/an.hour.ago.coffee
-	@cat $< | $(bin)/coffee --compile --stdio > $@
+.PHONY: all
+all: $(JS_FILES)
+
+lib/%.js: src/%.coffee
+	@cat $< | $(COFFEE) --compile --stdio > $@
 
 
 .PHONY: setup
@@ -12,4 +18,4 @@ setup:
 
 .PHONY: test
 test:
-	@$(bin)/mocha --compilers coffee:coffee-script
+	@$(MOCHA)
