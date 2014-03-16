@@ -1,5 +1,5 @@
 COFFEE = node_modules/.bin/coffee
-MOCHA = node_modules/.bin/mocha --compilers coffee:coffee-script/register
+ISTANBUL = node_modules/.bin/istanbul
 SEMVER = node_modules/.bin/semver
 
 JS_FILES = $(patsubst src/%.coffee,lib/%.js,$(shell find src -type f))
@@ -42,4 +42,4 @@ setup:
 
 .PHONY: test
 test: all
-	$(MOCHA)
+	$(ISTANBUL) cover node_modules/.bin/_mocha -- --compilers coffee:coffee-script/register
