@@ -1,6 +1,6 @@
 assert = require 'assert'
 
-require '../src/an.hour.ago'
+require '..'
 
 
 isDate = (object) -> Object::toString.call(object) is '[object Date]'

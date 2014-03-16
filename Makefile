@@ -41,5 +41,5 @@ setup:
 
 
 .PHONY: test
-test:
+test: all
 	$(MOCHA)
