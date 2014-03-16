@@ -2,7 +2,7 @@
   "name": "an.hour.ago",
   "version": "0.3.0",
   "description": "DSL for expressing and comparing dates and times",
-  "author": "David Chambers <dc@hashify.me>",
+  "author": "David Chambers <dc@davidchambers.me>",
   "main": "./lib/an.hour.ago",
   "licenses": [{
     "type": "WTFPL",
