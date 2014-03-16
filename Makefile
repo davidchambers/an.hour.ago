@@ -11,6 +11,11 @@ lib/%.js: src/%.coffee
 	cat $< | $(COFFEE) --compile --stdio > $@
 
 
+.PHONY: clean
+clean:
+	rm -f -- $(JS_FILES)
+
+
 .PHONY: setup
 setup:
 	npm install
