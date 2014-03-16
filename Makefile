@@ -1,5 +1,5 @@
 COFFEE = node_modules/.bin/coffee
-MOCHA = node_modules/.bin/mocha --compilers coffee:coffee-script
+MOCHA = node_modules/.bin/mocha --compilers coffee:coffee-script/register
 SEMVER = node_modules/.bin/semver
 
 JS_FILES = $(patsubst src/%.coffee,lib/%.js,$(shell find src -type f))
