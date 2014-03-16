@@ -9,7 +9,7 @@ JS_FILES = $(patsubst src/%.coffee,lib/%.js,$(shell find src -type f))
 all: $(JS_FILES)
 
 lib/%.js: src/%.coffee
-	cat $< | $(COFFEE) --compile --stdio > $@
+	$(COFFEE) --compile --output $(@D) -- $<
 
 
 .PHONY: clean
