@@ -15,6 +15,7 @@
   "bugs": "https://github.com/davidchambers/an.hour.ago/issues",
   "devDependencies": {
     "coffee-script": "1.6.x",
-    "mocha": "1.18.x"
+    "mocha": "1.18.x",
+    "semver": "2.2.x"
   }
 }
