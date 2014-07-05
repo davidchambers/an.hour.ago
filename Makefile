@@ -1,12 +1,13 @@
 COFFEE = node_modules/.bin/coffee
 ISTANBUL = node_modules/.bin/istanbul
-SEMVER = node_modules/.bin/semver
+XYZ = node_modules/.bin/xyz --repo git@github.com:davidchambers/an.hour.ago.git --script scripts/prepublish
 
-JS_FILES = $(patsubst src/%.coffee,lib/%.js,$(shell find src -type f))
+SRC = $(shell find src -name '*.coffee')
+LIB = $(patsubst src/%.coffee,lib/%.js,$(SRC))
 
 
 .PHONY: all
-all: $(JS_FILES)
+all: $(LIB)
 
 lib/%.js: src/%.coffee
 	$(COFFEE) --compile --output $(@D) -- $<
@@ -14,30 +15,23 @@ lib/%.js: src/%.coffee
 
 .PHONY: clean
 clean:
-	rm -f -- $(JS_FILES)
+	rm -f -- $(LIB)
 
 
-.PHONY: release-patch release-minor release-major
-VERSION = $(shell node -p 'require("./package.json").version')
-release-patch: NEXT_VERSION = $(shell $(SEMVER) -i patch $(VERSION))
-release-minor: NEXT_VERSION = $(shell $(SEMVER) -i minor $(VERSION))
-release-major: NEXT_VERSION = $(shell $(SEMVER) -i major $(VERSION))
+.PHONY: release-major release-minor release-patch
+release-major: LEVEL = major
+release-minor: LEVEL = minor
+release-patch: LEVEL = patch
 
-release-patch release-minor release-major:
-	@printf 'Current version is $(VERSION). This will publish version $(NEXT_VERSION). Press [enter] to continue.' >&2
-	@read
-	node -e '\
-		var o = require("./package.json"); o.version = "$(NEXT_VERSION)"; \
-		require("fs").writeFileSync("./package.json", JSON.stringify(o, null, 2) + "\n")'
-	git commit --message '$(NEXT_VERSION)' -- package.json
-	git tag --annotate '$(NEXT_VERSION)' --message '$(NEXT_VERSION)'
-	git push origin refs/heads/master 'refs/tags/$(NEXT_VERSION)'
-	npm publish
+release-major release-minor release-patch:
+	@$(XYZ) --increment $(LEVEL)
 
 
 .PHONY: setup
 setup:
 	npm install
+	make clean
+	git update-index --assume-unchanged -- $(LIB)
 
 
 .PHONY: test
