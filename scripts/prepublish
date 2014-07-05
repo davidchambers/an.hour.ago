@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+rm -f                                   lib/an.hour.ago.js
+make                                    lib/an.hour.ago.js
+git update-index --no-assume-unchanged  lib/an.hour.ago.js
+git add                                 lib/an.hour.ago.js
+git update-index --assume-unchanged     lib/an.hour.ago.js
