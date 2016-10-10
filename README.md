@@ -12,14 +12,14 @@ Let's start with a simple example...
 
 ```coffeescript
 # CoffeeScript                                  # JavaScript
-3.days.ago                                      # 3..days.ago
+3.days.ago                                      # 3.days.ago
 ```
 
 This produces a [`Date`][1] instance representing 72 hours before the present.
 Neat. What about the future?
 
 ```coffeescript
-1.minute.from_now                               # 1..minute.from_now
+1.minute.from_now                               # 1.minute.from_now
 ```
 
 Easy! Note the use of `minute` rather than `minutes`. The two are synonymous;
@@ -37,15 +37,15 @@ awkward double dot is not required.
 What about dates relative to other points in time?
 
 ```coffeescript
-tomorrow  = 1.day.from_now                      # var tomorrow  = 1..day.from_now
+tomorrow  = 1.day.from_now                      # var tomorrow  = 1.day.from_now
 halloween = new Date '31 October 2011'          # var halloween = new Date('31 October 2011')
 christmas = new Date '25 December 2011'         # var christmas = new Date('25 December 2011')
                                                 #
-1.week.from tomorrow                            # 1..week.from(tomorrow)
+1.week.from tomorrow                            # 1.week.from(tomorrow)
                                                 #
-2.days.after halloween                          # 2..days.after(halloween)
+2.days.after halloween                          # 2.days.after(halloween)
                                                 #
-1.week.before christmas                         # 1..week.before(christmas)
+1.week.before christmas                         # 1.week.before(christmas)
 ```
 
 `from` and `after` are synonymous; use whichever reads better.
@@ -69,9 +69,9 @@ Oh, and I should mention, you can add `NaturalDate` instances using the `and`
 method:
 
 ```coffeescript
-an.hour.and(58.minutes).from_now                # an.hour.and(58..minutes).from_now
+an.hour.and(58.minutes).from_now                # an.hour.and(58.minutes).from_now
                                                 #
-11.hours.and(36.minutes).and(9.seconds).ago     # 11..hours.and(36..minutes).and(9..seconds).ago
+11.hours.and(36.minutes).and(9.seconds).ago     # 11.hours.and(36.minutes).and(9.seconds).ago
 ```
 
 *Can you help me with date comparison? To determine whether an event occurred
